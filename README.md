@@ -45,3 +45,5 @@ create traffic. It expects an argument to be the name of a Heroku application
 to run the test against. It will automatically set and unset the `LOAD_SHED`
 environment variable to observe the behaviour of the application with and
 without load shedding.
+
+There is some more information about testing this in production in a [blog post](https://medium.com/carwow-product-engineering/shadow-requesting-for-great-good-92cde331363a).
