@@ -38,6 +38,18 @@ still _meaningful_ to serve. In an environment where clients automatically
 retry requests, this means that retries are more likely to succeed, as queue
 depth is controlled.
 
+### Results
+
+![Chart](./images/chart.png)
+![Table](./images/table.png)
+
+The results show that with load shedding enabled, the queue remains controlled
+and we are able to serve 10x more requests that result in a 2XX response _within_
+the client timeout threshold.
+
+Load shedding is an easy addition to your application middleware stack that can
+mean the difference between service degradation and service unavailability.
+
 ---
 
 The `scripts/load` script runs a series of 'trials' using `rakyll/hey` to
