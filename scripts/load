@@ -19,11 +19,6 @@ function trial() {
   echo "Done..."
 }
 
-function trials() {
-  echo "running trials..."
-
-}
-
 function loadshed() {
   printf "setting 'LOAD_SHED=${1}' ..."
   heroku config:set LOAD_SHED=${1} --app ${APP}
