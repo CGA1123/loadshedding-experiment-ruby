@@ -57,7 +57,8 @@ end
 def spin(ms)
   now = current
 
-  while Shed.ensure_time_left! && (current - now) < ms
+  while (current - now) < ms
+    Shed.ensure_time_left!
   end
 end
 
