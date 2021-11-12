@@ -7,7 +7,7 @@ function trial() {
   local time=${1}
   local workers=${2}
   local percent=${3}
-  local label="workers-${workers}-percent-${percent}"
+  local label="workers-${workers}-percent-$(printf "%02d" ${percent})"
 
   echo "Running ${name} for ${time} with ${workers} workers..."
   hey \
