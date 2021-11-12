@@ -50,7 +50,7 @@ the client timeout threshold.
 Load shedding is an easy addition to your application middleware stack that can
 mean the difference between service degradation and service unavailability.
 
----
+### Replicating results
 
 The `scripts/load` script runs a series of 'trials' using `rakyll/hey` to
 create traffic. It expects an argument to be the name of a Heroku application
@@ -61,5 +61,11 @@ without load shedding.
 It expects a single argument, the name of the heroku application e.g.
 
 `scripts/load load-shedding-test-application`
+
+`HONEYCOMB_WRITE_KEY` will need to be set in order to record metrics via
+honeycomb.io -- a free account can be created which has more than enough quota
+for this purpose.
+
+---
 
 There is some more information about testing this in production in a [blog post](https://medium.com/carwow-product-engineering/shadow-requesting-for-great-good-92cde331363a).
