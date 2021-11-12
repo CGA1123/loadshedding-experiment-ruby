@@ -28,23 +28,23 @@ function loadshed() {
 }
 
 function trials() {
-  trial "60s" "10" 0
+  trial "60s" "20" 0
 
   sleep 20
 
-  trial "60s" "10" 1
+  trial "60s" "20" 1
 
   sleep 20
 
-  trial "60s" "10" 5
+  trial "60s" "20" 5
 
   sleep 20
 
-  trial "60s" "10" 10
+  trial "60s" "20" 10
 
   sleep 20
 
-  trial "60s" "10" 15
+  trial "60s" "20" 15
 }
 
 loadshed 0
