@@ -1,37 +1,9 @@
 require "puma"
 require "libhoney"
 require "time"
+require "shed"
 
 LOAD_SHED = ENV["LOAD_SHED"] == "1"
-
-class LoadShed
-  def initialize(app)
-    @app = app
-  end
-
-  def call(env)
-    if drop?(env)
-      [503, {}, []]
-    else
-      @app.call(env)
-    end
-  end
-
-  private
-
-  def drop?(env)
-    wait_time = current - env["HTTP_X_REQUEST_START"].to_i
-    client_timeout = env["HTTP_X_CLIENT_TIMEOUT_MS"].to_i
-
-    return true if wait_time > 10_000
-
-    LOAD_SHED && client_timeout > 0 && wait_time > client_timeout
-  end
-
-  def current
-    (Time.now.to_f * 1_000).to_i
-  end
-end
 
 class HoneyMiddleware
   def initialize(app)
@@ -85,7 +57,7 @@ end
 def spin(ms)
   now = current
 
-  while (current - now) < ms
+  while Shed.time_left? && (current - now) < ms
   end
 end
 
@@ -98,7 +70,7 @@ def spin?(percent)
 end
 
 use HoneyMiddleware
-use LoadShed
+use Shed::RackMiddleware::Propagate if LOAD_SHED
 
 run ->(env) do
   percent = Rack::Utils.parse_nested_query(env[Rack::QUERY_STRING]).fetch("percent", "0").to_i

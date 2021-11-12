@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/CGA1123/shed.git
+  revision: 1714d2dde1566ff50d1847127b454003a9ec99a6
+  glob: ruby/shed.gemspec
+  specs:
+    shed (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +81,7 @@ DEPENDENCIES
   pry
   puma
   rack
+  shed!
   standard
 
 BUNDLED WITH
