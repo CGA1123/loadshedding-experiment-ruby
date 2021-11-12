@@ -67,7 +67,7 @@ def current
 end
 
 def spin?(percent)
-  percent <= (rand(1..100))
+  percent >= (rand(1..100))
 end
 
 use HoneyMiddleware
