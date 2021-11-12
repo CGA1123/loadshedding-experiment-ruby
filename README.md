@@ -43,6 +43,10 @@ depth is controlled.
 ![Chart](./images/chart.png)
 ![Table](./images/table.png)
 
+- `COUNT` shows the number of requests
+- `HEATMAP(response.total_time)` visualises the distribution of total request time (queue + server time)
+- `AVG(response.fast_success)` visualises the percentage of requests which resulted in a 200 response _within_ 2000ms
+
 The results show that with load shedding enabled, the queue remains controlled
 and we are able to serve 10x more requests that result in a 2XX response _within_
 the client timeout threshold.
