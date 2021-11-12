@@ -70,7 +70,7 @@ def spin?(percent)
 end
 
 use HoneyMiddleware
-use Shed::RackMiddleware::Propagate if LOAD_SHED
+use Shed::RackMiddleware::Propagate, delta: Shed::HerokuDelta if LOAD_SHED
 
 run ->(env) do
   percent = Rack::Utils.parse_nested_query(env[Rack::QUERY_STRING]).fetch("percent", "0").to_i
