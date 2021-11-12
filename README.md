@@ -3,7 +3,7 @@
 A sample Ruby/Rack application to test/experiment with the impact of
 loadshedding on request queue time.
 
-The application runs a `puma` webserver with 10 threads, every request will
+The application runs a `puma` webserver with 20 threads, every request will
 do at least 100ms of work, with a configuration percentage chance of doing 1000ms
 of work in order to simulate some abnormal slow downstream service.
 
