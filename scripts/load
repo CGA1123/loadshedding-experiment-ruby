@@ -1,13 +1,14 @@
 #!/bin/bash
 
 APP=${1}
+URL=${2}
 CLIENT_TIMEOUT=2000
 
 function trial() {
   local time=${1}
   local workers=${2}
   local percent=${3}
-  local label="workers-${workers}-percent-$(printf "%02d" ${percent})"
+  local label="percent-$(printf "%02d" ${percent})"
 
   echo "Running ${name} for ${time} with ${workers} workers..."
   hey \
@@ -15,7 +16,7 @@ function trial() {
     -c ${workers} \
     -z ${time} \
     -t 2 \
-    "https://${APP}.herokuapp.com?percent=${percent}&label=${label}"
+    "https://${URL}.herokuapp.com?percent=${percent}&label=${label}"
   echo "Done..."
 }
 
@@ -28,23 +29,27 @@ function loadshed() {
 }
 
 function trials() {
-  trial "60s" "20" 0
+  trial "60s" "48" 0
 
   sleep 20
 
-  trial "60s" "20" 1
+  trial "60s" "48" 1
 
   sleep 20
 
-  trial "60s" "20" 5
+  trial "60s" "48" 2
 
   sleep 20
 
-  trial "60s" "20" 10
+  trial "60s" "48" 3
 
   sleep 20
 
-  trial "60s" "20" 15
+  trial "60s" "48" 5
+
+  sleep 20
+
+  trial "60s" "48" 10
 }
 
 loadshed 0
