@@ -77,7 +77,7 @@ run ->(env) do
   percent = Rack::Utils.parse_nested_query(env[Rack::QUERY_STRING]).fetch("percent", "0").to_i
 
   spin_ms = 100
-  spin_ms = 1_000 if !percent.zero? && spin?(percent)
+  spin_ms = 10_000 if !percent.zero? && spin?(percent)
 
   spin(spin_ms)
 
